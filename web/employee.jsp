@@ -16,8 +16,8 @@
     <body>
         <div>
             <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
-            <h1>Maggard ${employee.lastName}, Alex ${employee.firstName}<h1>
-            <h3>635345 ${employee.employeeID}</h3>
+            <h1>${employee.lastName}, ${employee.firstName}<h1>
+            <h3>Employee ID: ${employee.employeeID}</h3>
             
             <div id="timeTable">
                 <table>
