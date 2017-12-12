@@ -5,11 +5,13 @@ import RTv2.objects.Employee;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@WebServlet(name = "EmployeesServlet", urlPatterns = {"/employee"})
 public class EmployeesServlet extends HttpServlet {
 
     @Override
@@ -67,14 +69,14 @@ public class EmployeesServlet extends HttpServlet {
             request.setAttribute("employees", employees);            
         }
         
-        //verify user and launch proper landing page
+       //verify user and launch proper landing page
         else if (action.equals("verifyLogIn")) {           
             
             int employeeID = Integer.parseInt(request.getParameter("loginID"));
             String password = request.getParameter("password");
             int authLevel = 0;
             
-            Employee verifyEmployee = new Employee();            
+            Employee verifyEmployee;            
             verifyEmployee = EmployeeDB.verifyLogin(employeeID, password);
             
             if(verifyEmployee != null)
