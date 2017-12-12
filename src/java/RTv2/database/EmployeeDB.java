@@ -48,8 +48,11 @@ public class EmployeeDB {
         PreparedStatement ps = null;
 
         String query = "UPDATE cs_employees SET "
-                + "FirstName = ?, LastName = ?, "
-                + "PayRate =?, AuthLevel = ?, Status = ?, Password = ? "
+                + "FirstName = ?,"
+                + "LastName = ?, "
+                + "PayRate = ?, "
+                + "AuthLevel = ?, "
+                + "Status = ? "
                 + "WHERE employeeID = ?";
         try {
            ps = connection.prepareStatement(query);
