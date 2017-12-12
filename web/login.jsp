@@ -18,7 +18,7 @@
                     <input type="text" name="loginID"><br>
                 <label>Password:</label><br>
                     <input type="password" name="password"><br><br>
-                <button type="submit" value="update" name="submit" >Log In</button><br>
+                <button type="submit" value="update" name="submit">Log In</button><br>
             </form>
         </div>
     </body>
