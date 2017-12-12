@@ -19,8 +19,9 @@ public class EmployeeDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO cs_employees (EmployeeID, FirstName, LastName, "
-                + "AuthLevel, Status, PayRate, Password) "
+                = "INSERT INTO cs_employees (EmployeeID, FirstName, "
+                + "LastName, AuthLevel, Status, PayRate, "
+                +"Password) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
@@ -33,6 +34,7 @@ public class EmployeeDB {
             ps.setString(7, "password");//set password default to password
 
             return ps.executeUpdate();
+            
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
