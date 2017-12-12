@@ -48,11 +48,9 @@
                           <td>${employee.lastName}</td>
                           <td>${employee.authLevel}</td>
                           <td>${employee.payRate}</td>
-                          <!-- edit action will trigger selected employees information to the above form -->
                           <td><a href="employee?action=display_employee&amp;employeeID=${employee.employeeID}">Edit</a></td>
-                          <!-- view hours action will hide employeeTablePanel and employeeFormPanel -->
                           <td><a href="employee?action=delete_employee&amp;employeeID=${employee.employeeID}">Delete</a></td>
-                          <!-- after the current panels are hidden timeClockTablePanel and timeClockFormPanel will display -->
+                          
                           
                         </tr>
                         </c:forEach>
