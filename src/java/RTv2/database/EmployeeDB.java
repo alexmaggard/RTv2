@@ -215,14 +215,13 @@ public class EmployeeDB {
             ArrayList<TimeClock> timeClocks = new ArrayList<TimeClock>();
             while (rs.next())
             {
-//                TimeClock timeClock = new TimeClock();
-//                timeClock.setDay(rs.getDate("day"));
-//                timeClock.setStartTime(rs.getDate("startTime"));
-//                timeClock.setLunchOut(rs.getDate("lunchOut"));
-//                timeClock.setLunchIn(rs.getDate("lunchIn"));
-//                timeClock.setEndTime(rs.getDate("endTime"));
-//                
-//                timeClocks.add(timeClock);
+                TimeClock timeClock = new TimeClock();
+                timeClock.setDay(rs.getString("day"));
+                timeClock.setStartTime(rs.getString("startTime"));
+                timeClock.setLunchOut(rs.getString("lunchOut"));
+                timeClock.setLunchIn(rs.getString("lunchIn"));
+                timeClock.setEndTime(rs.getString("endTime"));
+                timeClocks.add(timeClock);
             }
             return timeClocks;
         } catch (SQLException e) {
