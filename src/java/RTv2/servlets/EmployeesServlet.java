@@ -86,6 +86,8 @@ public class EmployeesServlet extends HttpServlet {
             else{
                 ;
             }
+            request.setAttribute("employee", verifyEmployee);
+
             switch (authLevel) {
                 case 1:
                     url="/manager.jsp";
