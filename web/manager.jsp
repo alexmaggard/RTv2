@@ -16,7 +16,11 @@
     <body>
         <div>
             <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
+<<<<<<< HEAD
             <h1>${employee.lastName}, ${employee.firstName}<h1>
+=======
+            <h1>${employee.lastName},${employee.firstName}<h1>
+>>>>>>> origin/alexBranch
             <h3>${employee.employeeID}</h3>
             
             <div id="timeTable">
