@@ -5,6 +5,7 @@
  */
 package RTv2.servlets;
 
+import RTv2.database.EmployeeDB;
 import RTv2.objects.Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,10 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Alexander
- */
 public class EmployeesServlet extends HttpServlet {
 
     @Override
