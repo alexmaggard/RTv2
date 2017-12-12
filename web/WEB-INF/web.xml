@@ -8,6 +8,14 @@
         <servlet-name>EmployeesServlet</servlet-name>
         <url-pattern>/employee</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>TimeClocksServlet</servlet-name>
+        <servlet-class>RTv2.servlets.TimeClocksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeClocksServlet</servlet-name>
+        <url-pattern>/timeclock</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

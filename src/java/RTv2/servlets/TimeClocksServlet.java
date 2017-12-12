@@ -51,7 +51,7 @@ public class TimeClocksServlet extends HttpServlet {
         
         TimeClock tc = (TimeClock) session.getAttribute("day");
         
-        if (action.equals("clockIn")) {
+        if (action.equals("Clock-In")) {
             if (tc.getStartTime().equals("")){
                 tc.setStartTime(LocalTime.now().toString());
             } else if (tc.getLunchIn().equals("")){
@@ -59,7 +59,7 @@ public class TimeClocksServlet extends HttpServlet {
             } else
                 JOptionPane.showMessageDialog(null, "Please Clock Out.");
             JOptionPane.showMessageDialog(null, "Clocked In.");
-        } else if (action.equals("clockOut")) {
+        } else if (action.equals("Clock-Out")) {
             if (tc.getLunchOut().equals("")){
                 tc.setLunchOut(LocalTime.now().toString());
             } else if (tc.getEndTime().equals("")){
