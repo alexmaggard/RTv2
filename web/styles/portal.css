@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 11, 2017, 5:05:37 PM
+    Author     : Daniel Martinez
+*/
+
+/* Element Style */
+
+html, div, body, h1, form, label, button {
+    display: block;
+}
+
+body { 
+    background-color: white;
+    margin: auto;
+    padding: 0px;
+    line-height: 1em;
+    width: 76%;
+    border: 3px solid green;
+
+}
+div#loginBanner { 
+    margin: 10px auto;
+    width: 50%;
+    border: 3px solid green;
+}
+div#loginBanner h1{ 
+    text-align: center;
+}
+
+div#loginContainer { 
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+
+ }
+
+div#loginContainer label {
+}
+
