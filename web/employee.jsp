@@ -43,8 +43,8 @@
                 </table><br>
             </div><!-- END TIME TABLE -->
                     
-            <button value="Clock-In" action="clockIn">Clock-In</button>
-            <button value ="Clock-Out" action="clockOut">Clock-Out</button>
+            <button action="timeclock" value="Clock-In" action="clockIn">Clock-In</button>
+            <button action="timeclock" value ="Clock-Out" action="clockOut">Clock-Out</button>
             <button value="Change Password" action="changePass">Change Password</button>
         
         </div>

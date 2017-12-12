@@ -19,20 +19,22 @@ public class EmployeeDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO cs_employees (employeeID, firstName, lastName,"
-                + " authLevel, status, payRate, password) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO cs_employees (EmployeeID, FirstName, "
+                + "LastName, AuthLevel, Status, PayRate, "
+                +"Password) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
             ps.setInt(1, employee.getEmployeeID());
             ps.setString(2, employee.getFirstName());
             ps.setString(3, employee.getLastName());
-            ps.setInt(3, employee.getAuthLevel());
-            ps.setBoolean(4, employee.getStatus());
+            ps.setInt(4, employee.getAuthLevel());
+            ps.setBoolean(5, false);
             ps.setDouble(6, employee.getPayRate());
-            ps.setString(6, employee.getPassword());
+            ps.setString(7, "password");//set password default to password
 
             return ps.executeUpdate();
+            
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
