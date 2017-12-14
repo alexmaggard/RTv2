@@ -31,7 +31,7 @@
                     </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeClock" items="${timeClock}">
+                    <c:forEach var="timeClock" items="${timeClocks}">
                     <tr>
                       <td>${timeClock.day}</td>
                       <td>${timeClock.startTime}</td>
