@@ -13,21 +13,20 @@
     </head>
     
     <body>
-        <div>
+        <div id="employeeBanner">
             <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
-
             <h1>${employee.lastName}, ${employee.firstName}<h1>
-
-            <h3>${employee.employeeID}</h3>
-            
-            <div id="timeTable">
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Start</th>
-                        <th colspan="2" id="lunchColumn">Lunch</th>
-                        <th>End</th>
-                    </tr>
+            <h3>Employee ID: ${employee.employeeID}</h3>
+         </div>
+         <div id="container">
+             <div id="timeTable">
+                 <table>
+                     <tr>
+                         <th>Date</th>
+                         <th>Start</th>
+                         <th colspan="2" id="lunchColumn">Lunch</th>
+                         <th>End</th>
+                     </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <c:forEach var="timeClock" items="${timeClocks}">
@@ -43,7 +42,7 @@
                     
                 </table><br>
             </div><!-- END TIME TABLE -->
-                    
+        <div id="buttons">            
             <button action="clockIn">Clock-In</button>
             <button action="clockOut">Clock-Out</button>
             <button action="changePass">Change Password</button>

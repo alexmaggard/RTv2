@@ -19,7 +19,7 @@
             <h3>Employee ID: ${employee.employeeID}</h3>
          </div>
          
-         <div id="buttons">
+         <div id="container">
             <div id="timeTable">
                 <table>
                     <tr>
@@ -47,7 +47,6 @@
             <button action="timeclock" value="Clock-In" action="clockIn">Clock-In</button>
             <button action="timeclock" value ="Clock-Out" action="clockOut">Clock-Out</button>
             <button value="Change Password" action="changePass">Change Password</button>
-        
         </div>
     </body>
     
