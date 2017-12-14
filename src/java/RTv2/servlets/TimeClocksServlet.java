@@ -49,54 +49,45 @@ public class TimeClocksServlet extends HttpServlet {
         // get current action
         String action = request.getParameter("action");
         
-        TimeClock tc = (TimeClock) session.getAttribute("day");
         
-        if (action.equals("Clock-In")) {
-            if (tc.getStartTime().equals("")){
-                tc.setStartTime(LocalTime.now().toString());
-            } else if (tc.getLunchIn().equals("")){
-                tc.setLunchIn(LocalTime.now().toString());
+        if (action.equals("startTime")) {
+            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
+            //if dayID.equals("")
+            //setAttribute for dayID
+            if (timeClock.getStartTime().equals("")){
+                timeClock.setStartTime(LocalTime.now().toString());
+            } else if (timeClock.getLunchIn().equals("")){
+                timeClock.setLunchIn(LocalTime.now().toString());
             } else
                 JOptionPane.showMessageDialog(null, "Please Clock Out.");
-            JOptionPane.showMessageDialog(null, "Clocked In.");
-        } else if (action.equals("Clock-Out")) {
-            if (tc.getLunchOut().equals("")){
-                tc.setLunchOut(LocalTime.now().toString());
-            } else if (tc.getEndTime().equals("")){
-                tc.setEndTime(LocalTime.now().toString());
+        } else if (action.equals("clockOut")) {
+            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
+            if (timeClock.getLunchOut().equals("")){
+                timeClock.setLunchOut(LocalTime.now().toString());
+            } else if (timeClock.getEndTime().equals("")){
+                timeClock.setEndTime(LocalTime.now().toString());
             } else
                 JOptionPane.showMessageDialog(null, "Please Clock In.");
-            JOptionPane.showMessageDialog(null, "Clocked Out");
         }
         
-        if (action.equals("display_timeClocks")) {   //changed to display timeClocks         
-            // get list of all timeClocks for the manager on the viewEmployeePage   
-            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClocks();            
-            request.setAttribute("timeClock", timeClock);
+        if (action.equals("display_timeClocks")) {            
+            // get list of users
+            ArrayList<TimeClock> timeClocks = TimeClockDB.selectTimeClocks();            
+            request.setAttribute("timeClocks", timeClocks);
+            url = "/viewTimeClocks.jsp";
         } 
-        
-        //display particular employees hours based on ID
-        else if (action.equals("display_timeClock")) {
-            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-            TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
-            session.setAttribute("timeClock", timeClock);
-            
-            url = "/viewEmployees.jsp";
-        }
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-            String day = request.getParameter("day");
             String clockIn = request.getParameter("clockIn");
             String lunchOut = request.getParameter("lunchOut");
             String lunchIn = request.getParameter("lunchIn");
             String clockOut = request.getParameter("clockOut");
 
             // get and update user
-            TimeClock timeClock = (TimeClock) session.getAttribute("employee"); 
+            TimeClock timeClock = (TimeClock) session.getAttribute("employeeID"); 
             timeClock.setEmployeeID(employeeID);
-            timeClock.setDay(day);
             timeClock.setStartTime(clockIn);
             timeClock.setLunchOut(lunchOut);
             timeClock.setLunchIn(lunchIn);
