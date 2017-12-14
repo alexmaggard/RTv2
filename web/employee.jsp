@@ -6,19 +6,20 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
-        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <link rel="stylesheet" href="styles/base.css" type="text/css"/>
         <title>Employee View</title>
     </head>
     
     <body>
-        <div>
+        <div id="employeeBanner">
             <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
             <h1>${employee.lastName}, ${employee.firstName}<h1>
             <h3>Employee ID: ${employee.employeeID}</h3>
-            
+         </div>
+         
+         <div id="buttons">
             <div id="timeTable">
                 <table>
                     <tr>

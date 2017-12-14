@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Dec 11, 2017, 5:05:37 PM
+    Created on : Dec 13, 2017, 7:29:32 PM
     Author     : Daniel Martinez
 */
 
@@ -17,35 +17,16 @@ html, div, body, h1, form, label, button {
 body { 
     background-color: white;
     margin: auto;
-    padding: 0px;
+    padding: 10px;
     line-height: 1em;
     width: 76%;
-    border: 3px solid green;
+    border: 3px dashed green;
 
 }
-div#loginBanner { 
+div#employeeBanner { 
     margin: 10px auto;
     width: 50%;
     border: 3px solid green;
-}
-div#loginBanner h1{ 
-    text-align: center;
-}
-
-div#loginContainer { 
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    position: relative;
-
- }
-
-div#loginContainer input[type=text],
-div#loginContainer input[type=password] {
-
-    /* Size and position */
-    width: 100%;
-    padding: 10px 18px 10px 45px;
-    
+    float: left;
 }
 
