@@ -18,7 +18,7 @@
             <div id="timeClockFormPanel">
                 <form id="timeClockForm">
                     <label class="pad_top">Day:</label>
-                    <input type="date" name="day" value="${timeClock.day}">
+                    <input type="date" name="dayID" value="${timeClock.dayID}">
                     <label class="pad_top">Start Time:</label>
                     <input type="date" name="startTime" value="${timeClock.startTime}">
                     <label class="pad_top">Lunch Start:</label>
@@ -43,9 +43,9 @@
                     
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                        <c:forEach var="timeClock" items="${timeClocks}">
+                        <c:forEach var="timeClock" items="${timeClock}">
                         <tr>
-                          <td>${timeClock.day}</td>
+                          <td>${timeClock.dayID}</td>
                           <td>${timeClock.startTime}</td>
                           <td>${timeClock.lunchOut}</td>
                           <td>${timeClock.lunchIn}</td>

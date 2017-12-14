@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class TimeClock implements Serializable{
     
     private int employeeID;
-    private String day;
+    private String dayID;
     private String startTime;
     private String lunchOut;
     private String lunchIn;
@@ -13,11 +13,11 @@ public class TimeClock implements Serializable{
     
     public TimeClock(){}
     
-    public TimeClock(int employeeID, String day, String startTime, String lunchOut, 
+    public TimeClock(int employeeID, String dayID, String startTime, String lunchOut, 
                     String lunchIn, String endTime){
         
         this.employeeID = employeeID;
-        this.day = day;
+        this.dayID = dayID;
         this.startTime = startTime;
         this.lunchOut = lunchOut;
         this.lunchIn = lunchIn;
@@ -32,12 +32,12 @@ public class TimeClock implements Serializable{
         this.employeeID = employeeID;
     }
 
-    public String getDay() {
-        return day;
+    public String getDayID() {
+        return dayID;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDayID(String dayID) {
+        this.dayID = dayID;
     }
 
     public String getStartTime() {
