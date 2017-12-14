@@ -29,13 +29,13 @@
                     </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeCard" items="${timeCard}">
+                    <c:forEach var="timeClock" items="${timeClock}">
                     <tr>
-                      <td>${timeCard.day}</td>
-                      <td>${timeCard.startTime}</td>
-                      <td>${timeCard.lunchOut}</td>
-                      <td>${timeCard.lunchIn}</td>
-                      <td>${timeCard.endTime}</td>
+                      <td>${timeClock.day}</td>
+                      <td>${timeClock.startTime}</td>
+                      <td>${timeClock.lunchOut}</td>
+                      <td>${timeClock.lunchIn}</td>
+                      <td>${timeClock.endTime}</td>
                       
                     </tr>
                     </c:forEach>
@@ -48,6 +48,7 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
+            <a href="timeclock"><button>Show Hours</button></a>
 
         </div>
     </body>
