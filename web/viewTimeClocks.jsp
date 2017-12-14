@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta charset=UTF-8">
-        <!--<link rel="stylesheet" href="styles/viewEmployees.css" type="text/css"/>-->
+        <link rel="stylesheet" href="styles/viewEmployees.css" type="text/css"/>
         <title>View TimeClocks</title>
     </head>
     
     <body>
             
             <div id="timeClockFormPanel">
-                <form id="timeClockForm">
+                <form id="timeClockForm" action="timeclock" method="post">
                     <label class="pad_top">Day:</label>
                     <input type="date" name="dayID" value="${timeClock.dayID}">
                     <label class="pad_top">Start Time:</label>
@@ -27,6 +27,7 @@
                     <input type="date" name="lunchIn" value="${timeClock.lunchIn}">
                     <label class="pad_top">End Time:</label>
                     <input type="date" name="endTime" value="${timeClock.endTime}">
+                    <input type="submit" value="Update TimeClocks" action="display_timeClocks">
                 </form>
             </div>
                 
@@ -43,15 +44,16 @@
                     
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                        <c:forEach var="timeClock" items="${timeClock}">
+                        <c:forEach var="timeClock" items="${timeClocks}">
                         <tr>
+                          <td>${timeClock.employeeID}</td>
                           <td>${timeClock.dayID}</td>
                           <td>${timeClock.startTime}</td>
                           <td>${timeClock.lunchOut}</td>
                           <td>${timeClock.lunchIn}</td>
                           <td>${timeClock.endTime}</td>
                           <!-- edit time button will populate the timeClockForm with the selected dates information -->
-                          <td><button action="editTime">Edit</button></td>
+                          <td><a href="timeclock?action=display_timeClocks&amp;employeeID=${timeClock.employeeID}">Edit</a></td>
                         </tr>
                         </c:forEach>
                     

@@ -49,8 +49,12 @@ public class TimeClocksServlet extends HttpServlet {
         // get current action
         String action = request.getParameter("action");
         
+        if(action == null){
+            action = "display_timeClocks";
+        }
         
-        if (action.equals("startTime")) {
+        
+        if (action.equals("clockIn")) {
             TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
             //if dayID.equals("")
             //setAttribute for dayID
