@@ -15,6 +15,7 @@
     
     <body>
         <div>
+<<<<<<< HEAD
             <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
 
             <h1>${employee.lastName}, ${employee.firstName}<h1>
@@ -22,6 +23,11 @@
                     <h1>${employee.lastName},${employee.firstName}<h1>
 
                     <h3>${employee.employeeID}</h3>
+=======
+            <h1>${employee.lastName}, ${employee.firstName}<h1>
+
+            <h3>${employee.employeeID}</h3>
+>>>>>>> origin/alexBranch
             
             <div id="timeTable">
                 <table>
@@ -50,7 +56,8 @@
             <button action="clockIn">Clock-In</button>
             <button action="clockOut">Clock-Out</button>
             <button action="changePass">Change Password</button>
-            <a href="employee">View Employees</a>
+            <a href="employee"><button>View Employees</button></a>
+            <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
 
         </div>
     </body>
