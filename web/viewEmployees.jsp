@@ -11,7 +11,7 @@
             
             <div id="employeeFormPanel">
                 <form action="employee" method="post">
-                    <input type="hidden" name="action" value="update_employee"> 
+                    <input type="hidden" name="action" value="update_employee">
                     <label class="pad_top">Employee ID:</label>
                     <input type="text" name="employeeID" value="${employee.employeeID}"><br>
                     <label class="pad_top">First Name:</label>
@@ -22,8 +22,7 @@
                     <input type="text" name="authLevel" value="${employee.authLevel}"><br>
                     <label class="pad_top">Pay Rate:</label>
                     <input type="text" name="payRate" value="${employee.payRate}"><br>
-                    <input type="submit" value="Update" action="update_employee">
-                    <input type="submit" value="Add" action="add_employee">
+                    <input type="submit" value="Update Employee" action="update_employee">
                 </form>
 
             </div>
@@ -56,7 +55,8 @@
                         </c:forEach>
 
                 </table>
-                        <p><a href="employee">Refresh</a></p>
+                        <p><a href="employee"><button>Refresh Employees</button></a>
+                            <a href="addEmployeePage.jsp"><button>Add Employee</button></a></p>
             </div>
                
     </body>

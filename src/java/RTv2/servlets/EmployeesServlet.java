@@ -34,6 +34,7 @@ public class EmployeesServlet extends HttpServlet {
             // get list of users
             ArrayList<Employee> employees = EmployeeDB.selectEmployees();            
             request.setAttribute("employees", employees);
+            url = "/viewEmployees.jsp";
         }
         
         else if (action.equals("display_employee")) {
@@ -53,7 +54,7 @@ public class EmployeesServlet extends HttpServlet {
             boolean status = Boolean.parseBoolean(request.getParameter("status"));
             double payRate = Double.parseDouble(request.getParameter("payRate"));
 
-            // get and update user
+            // get and update employee
             Employee employee = (Employee) session.getAttribute("employee"); 
             employee.setEmployeeID(employeeID);
             employee.setFirstName(firstName);
@@ -100,7 +101,29 @@ public class EmployeesServlet extends HttpServlet {
                     break;
             }
 
-        } 
+        }
+        
+        else if (action.equals("add_employee")) {
+            // get parameters from the request
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            int authLevel = Integer.parseInt(request.getParameter("authLevel"));
+            boolean status = Boolean.parseBoolean(request.getParameter("status"));
+            String password = request.getParameter("password");
+            double payRate = Double.parseDouble(request.getParameter("payRate"));
+            
+            // store data in User object
+            Employee employee = new Employee(employeeID, firstName, lastName, password,
+            authLevel, status, payRate);
+            
+            EmployeeDB.insert(employee);
+            
+            url = "/viewEmployees.jsp";
+            
+            
+            
+        }
 
           else if (action.equals("changePassword")) {
             // get parameters from the request
