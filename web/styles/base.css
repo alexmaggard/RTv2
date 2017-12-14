@@ -33,3 +33,7 @@ div#container{
     border: 3px solid blue; 
 }
 
+div#buttons{ 
+    border: 2px solid lime;
+}
+
