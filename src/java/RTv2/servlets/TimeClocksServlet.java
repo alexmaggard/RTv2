@@ -80,12 +80,14 @@ public class TimeClocksServlet extends HttpServlet {
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
             TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
             session.setAttribute("timeClock", timeClock);
-            //url = "/viewEmployees.jsp";
+            
+            url = "/viewEmployees.jsp";
         }
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String day = request.getParameter("day");
             String clockIn = request.getParameter("clockIn");
             String lunchOut = request.getParameter("lunchOut");
             String lunchIn = request.getParameter("lunchIn");
@@ -94,6 +96,7 @@ public class TimeClocksServlet extends HttpServlet {
             // get and update user
             TimeClock timeClock = (TimeClock) session.getAttribute("employee"); 
             timeClock.setEmployeeID(employeeID);
+            timeClock.setDay(day);
             timeClock.setStartTime(clockIn);
             timeClock.setLunchOut(lunchOut);
             timeClock.setLunchIn(lunchIn);
