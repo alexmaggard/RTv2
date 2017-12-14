@@ -69,11 +69,19 @@ public class TimeClocksServlet extends HttpServlet {
             JOptionPane.showMessageDialog(null, "Clocked Out");
         }
         
-        if (action.equals("display_timeClock")) {            
-            // get list of users
+        if (action.equals("display_timeClocks")) {   //changed to display timeClocks         
+            // get list of all timeClocks for the manager on the viewEmployeePage   
             ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClocks();            
             request.setAttribute("timeClock", timeClock);
         } 
+        
+        //display particular employees hours based on ID
+        else if (action.equals("display_timeClock")) {
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
+            session.setAttribute("timeClock", timeClock);
+            //url = "/viewEmployees.jsp";
+        }
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request

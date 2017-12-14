@@ -48,6 +48,41 @@ public class TimeClockDB {
             pool.freeConnection(connection);
         }
     }
+    //select timeclock based on employeeID
+    public static TimeClock selectTimeClock(int employeeID){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+           
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM cs_workhours "
+                + "WHERE EmployeeID = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, employeeID);
+            rs = ps.executeQuery();
+            TimeClock timeClock = null;
+            if (rs.next()) {
+                    timeClock = new TimeClock();
+                    timeClock.setEmployeeID(rs.getInt("EmployeeID"));
+                    timeClock.setDay(rs.getString("Day"));
+                    timeClock.setStartTime(rs.getString("StartTime"));
+                    timeClock.setLunchOut(rs.getString("LunchOut"));
+                    timeClock.setLunchIn(rs.getString("LunchIn"));
+                    timeClock.setEndTime(rs.getString("End"));
+                    
+            }
+            return timeClock;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
     
     public static ArrayList<TimeClock> selectTimeClocks(){
     ConnectionPool pool = ConnectionPool.getInstance();
