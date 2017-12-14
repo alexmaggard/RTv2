@@ -16,7 +16,6 @@
     <body>
         <div>
             <h1>${employee.lastName}, ${employee.firstName}<h1>
-            <h1>${employee.lastName},${employee.firstName}<h1>
 
             <h3>${employee.employeeID}</h3>
             
