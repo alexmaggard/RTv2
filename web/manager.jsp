@@ -48,7 +48,7 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-            <a href="timeclock"><button>Show Hours</button></a>
+            <button action="showMyHours">Show My Hours</button></a>
 
         </div>
     </body>

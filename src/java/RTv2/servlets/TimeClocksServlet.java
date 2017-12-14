@@ -103,6 +103,15 @@ public class TimeClocksServlet extends HttpServlet {
             request.setAttribute("timeClocks", timeClocks);            
         }
         
+        else if (action.equals("showMyHours")){
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
+            session.setAttribute("timeClock",timeClock);
+            //TODO: add if statment to check authLevel based on
+            //authLevel choose either manager or employee.jsp...
+            url = "/manager.jsp";
+        }
+        
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
