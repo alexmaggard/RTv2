@@ -56,7 +56,7 @@
                         </c:forEach>
                     
                 </table>
-                        <p><a href="timeclock" action="display_timeClock">Refresh</a></p>
+                        <p><a href="timeclock" action="display_timeClocks"><button>Refresh</button></a></p>
             </div>
                
     </body>
