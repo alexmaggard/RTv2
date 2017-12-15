@@ -7,8 +7,8 @@ package RTv2.servlets;
 
 import RTv2.database.TimeClockDB;
 import RTv2.objects.TimeClock;
-
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -21,36 +21,24 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Admin
+ * @author Alexander
  */
-@WebServlet(name = "TimeClocksServlet", urlPatterns = {"/timeclock"})
-
-public class TimeClocksServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
- 
+@WebServlet(name = "ManagerPageServlet", urlPatterns = {"/ManagerPageServlet"})
+public class ManagerPageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-    
-        String url = "/viewTimeClocks.jsp";
+
+        String url = "/managerPage.jsp";
         
         // get current action
         String action = request.getParameter("action");
-        JOptionPane.showMessageDialog(null, action);
+        
         if(action == null){
-            action = "display_timeClocks";
+            action = "showMyHours";
         }
         
         
@@ -73,13 +61,6 @@ public class TimeClocksServlet extends HttpServlet {
             } else
                 JOptionPane.showMessageDialog(null, "Please Clock In.");
         }
-        
-        if (action.equals("display_timeClocks")) {            
-            // get list of users
-            ArrayList<TimeClock> timeClocks = TimeClockDB.selectTimeClocks();            
-            request.setAttribute("timeClocks", timeClocks);
-            url = "/viewTimeClocks.jsp";
-        } 
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
