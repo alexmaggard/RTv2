@@ -20,13 +20,13 @@
                     <label class="pad_top">Day:</label>
                     <input type="date" name="dayID" value="${timeClock.dayID}">
                     <label class="pad_top">Start Time:</label>
-                    <input type="date" name="startTime" value="${timeClock.startTime}">
+                    <input type="time" name="startTime" value="${timeClock.startTime}">
                     <label class="pad_top">Lunch Start:</label>
-                    <input type="date" name="lunchOut" value="${timeClock.lunchOut}">
+                    <input type="time" name="lunchOut" value="${timeClock.lunchOut}">
                     <label class="pad_top">Lunch End:</label>
-                    <input type="date" name="lunchIn" value="${timeClock.lunchIn}">
+                    <input type="time" name="lunchIn" value="${timeClock.lunchIn}">
                     <label class="pad_top">End Time:</label>
-                    <input type="date" name="endTime" value="${timeClock.endTime}">
+                    <input type="time" name="endTime" value="${timeClock.endTime}">
                     <input type="submit" value="Update TimeClocks" action="display_timeClocks">
                 </form>
             </div>
