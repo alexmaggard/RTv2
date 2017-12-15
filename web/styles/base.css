@@ -10,16 +10,15 @@ and open the template in the editor.
 
 /* Element Style */
 
-html, div, body, h1, form, label, button {
-    display: block;
-}
-
 body { 
     background-color: white;
     margin: auto;
     padding: 10px;
     width: 76%;
+    height: 90%;
     border: 3px dashed green;
+    box-shadow: black 10px 0px 15px,	
+		black -10px -10px 15px;
 
 }
 div#employeeBanner { 
@@ -30,10 +29,13 @@ div#employeeBanner {
 }
 
 div#container{
-    border: 3px solid blue; 
+    border: 3px solid blue; /* border*/
 }
 
 div#buttons{ 
-    border: 2px solid lime;
+   background-color: blue; /*  background */
+   border: 1px solid green; /*  border */
+   color: white; /* text */
+   padding: 10px 24px; /* Some padding */
+   float: left; /* Float the buttons side by side */    
 }
-

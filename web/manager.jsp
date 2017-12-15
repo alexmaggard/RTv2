@@ -49,6 +49,7 @@
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
             <a href="timeclock"><button>Show Hours</button></a>
+        </div>
 
         </div>
     </body>
