@@ -1,8 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
          <link rel="stylesheet" href="styles/portal.css" type="text/css"/>
         <title>Login Page</title>
     </head>
