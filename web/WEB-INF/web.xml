@@ -5,7 +5,7 @@
         <servlet-class>RTv2.servlets.EmployeesServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EmployeePageServlet</servlet-name>
+        <servlet-name>employeePageServlet</servlet-name>
         <servlet-class>RTv2.servlets.EmployeePageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -21,7 +21,7 @@
         <url-pattern>/timeclock</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EmployeePageServlet</servlet-name>
+        <servlet-name>employeePageServlet</servlet-name>
         <url-pattern>/employeePageServlet</url-pattern>
     </servlet-mapping>
     <session-config>
