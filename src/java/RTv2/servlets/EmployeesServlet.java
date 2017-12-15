@@ -91,10 +91,10 @@ public class EmployeesServlet extends HttpServlet {
 
             switch (authLevel) {
                 case 1:
-                    url="/manager.jsp";
+                    url="/managerPage.jsp";
                     break;
                 case 2:
-                    url="/employee.jsp";
+                    url="/employeePage.jsp";
                     break;
                 default:
                     url="/login.jsp";
