@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  * @author Admin
  */
 
-@WebServlet(name = "employeePageServlet", urlPatterns = {"/employeePageServlet"})
+@WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
 public class EmployeePageServlet extends HttpServlet {
 
    @Override
