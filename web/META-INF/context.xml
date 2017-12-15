@@ -6,7 +6,7 @@
               logAbandoned="true" maxActive="100" 
               maxIdle="30" maxWait="10000" 
               name="jdbc/capstone"
-              username="root" 
+              username="root"
               password="" 
               removeAbandoned="true" removeAbandonedTimeout="60" 
               type="javax.sql.DataSource" 

@@ -7,8 +7,8 @@ package RTv2.servlets;
 
 import RTv2.database.TimeClockDB;
 import RTv2.objects.TimeClock;
-
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -23,36 +23,27 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-@WebServlet(name = "TimeClocksServlet", urlPatterns = {"/timeclock"})
 
-public class TimeClocksServlet extends HttpServlet {
+@WebServlet(name = "employeePageServlet", urlPatterns = {"/employeePageServlet"})
+public class EmployeePageServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
- 
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
     
-        String url = "/viewTimeClocks.jsp";
+        String url = "/employeePage.jsp";
         
         // get current action
         String action = request.getParameter("action");
-        JOptionPane.showMessageDialog(null, action);
-        if(action == null){
-            action = "display_timeClocks";
-        }
         
+        JOptionPane.showMessageDialog(null, action);
+        
+        if(action == null){
+            action = "showMyHours";
+        }
         
         if (action.equals("clockIn")) {
             TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
@@ -73,13 +64,6 @@ public class TimeClocksServlet extends HttpServlet {
             } else
                 JOptionPane.showMessageDialog(null, "Please Clock In.");
         }
-        
-        if (action.equals("display_timeClocks")) {            
-            // get list of users
-            ArrayList<TimeClock> timeClocks = TimeClockDB.selectTimeClocks();            
-            request.setAttribute("timeClocks", timeClocks);
-            url = "/viewTimeClocks.jsp";
-        } 
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
@@ -109,7 +93,7 @@ public class TimeClocksServlet extends HttpServlet {
             session.setAttribute("timeClock",timeClock);
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
-            url = "/managerPage.jsp";
+            url = "/employeePage.jsp";
         }
         
         getServletContext()
