@@ -43,12 +43,12 @@
                 </table><br>
             </div><!-- END TIME TABLE -->
         <div id="buttons">            
-            <button action="clockIn">Clock-In</button>
-            <button action="clockOut">Clock-Out</button>
+            <a href="managerPageServlet" action="clockIn"><button>Clock-In</button></a>
+            <a href="managerPageServlet" action="clockOut"><button>Clock-Out</button></a>
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-            <button action="showMyHours">Show My Hours</button></a>
+            <a href="managerPageServlet" action="showMyHours"><button>Show My Hours</button></a>
 
         </div>
     </body>
