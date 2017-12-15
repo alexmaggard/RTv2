@@ -48,8 +48,12 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
+<<<<<<< HEAD:web/manager.jsp
             <a href="timeclock"><button>Show Hours</button></a>
         </div>
+=======
+            <button action="showMyHours">Show My Hours</button></a>
+>>>>>>> alexBranch:web/managerPage.jsp
 
         </div>
     </body>

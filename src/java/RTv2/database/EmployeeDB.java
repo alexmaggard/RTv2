@@ -219,7 +219,7 @@ public class EmployeeDB {
             while (rs.next())
             {
                 TimeClock timeClock = new TimeClock();
-                timeClock.setDay(rs.getString("day"));
+                timeClock.setDayID(rs.getString("dayID"));
                 timeClock.setStartTime(rs.getString("startTime"));
                 timeClock.setLunchOut(rs.getString("lunchOut"));
                 timeClock.setLunchIn(rs.getString("lunchIn"));

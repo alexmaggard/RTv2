@@ -29,7 +29,7 @@ public class EmployeesServlet extends HttpServlet {
         if (action == null) {
             action = "display_employees";  // default action
         }
-        
+        //display all employees
         if (action.equals("display_employees")) {            
             // get list of users
             ArrayList<Employee> employees = EmployeeDB.selectEmployees();            

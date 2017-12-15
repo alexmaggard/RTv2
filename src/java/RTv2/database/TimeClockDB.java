@@ -29,7 +29,7 @@ public class TimeClockDB {
                 + "StartTime = ?, LunchOut = ?, "
                 + "LunchIn = ?, EndTime = ? "
                 + "WHERE EmployeeID = ?";
-        
+        //TODO: find out if this should have employeeID field
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, timeClock.getStartTime());
@@ -66,7 +66,7 @@ public class TimeClockDB {
             if (rs.next()) {
                     timeClock = new TimeClock();
                     timeClock.setEmployeeID(rs.getInt("EmployeeID"));
-                    timeClock.setDay(rs.getString("Day"));
+                    timeClock.setDayID(rs.getString("DayID"));
                     timeClock.setStartTime(rs.getString("StartTime"));
                     timeClock.setLunchOut(rs.getString("LunchOut"));
                     timeClock.setLunchIn(rs.getString("LunchIn"));
@@ -99,7 +99,7 @@ public class TimeClockDB {
             {
                 TimeClock timeClock = new TimeClock();
                 timeClock.setEmployeeID(rs.getInt("EmployeeID"));
-                timeClock.setDay(rs.getString("Day"));
+                timeClock.setDayID(rs.getString("DayID"));
                 timeClock.setStartTime(rs.getString("StartTime"));
                 timeClock.setLunchOut(rs.getString("LunchOut"));
                 timeClock.setLunchIn(rs.getString("LunchIn"));
