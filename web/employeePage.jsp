@@ -45,10 +45,11 @@
             </div><!-- END TIME TABLE -->
             
             <div id="buttons">
-                <button value="Clock-In" action="clockIn">Clock-In</button>
+                <a href="employeePageServlet?action=clockIn"><button>Clock-In</button></a>
                 <button action="timeclock" value ="Clock-Out" action="clockOut">Clock-Out</button>
                 <button value="Change Password" action="changePass">Change Password</button>
                 <a href="employeePageServlet?action=showMyHours&amp;employeeID=${employee.employeeID}"/><button>Show My Hours</button></a>
+            </a>
             </div>
          </div>
     </body>
