@@ -11,22 +11,25 @@ and open the template in the editor.
 /* Element Style */
 
 body { 
-    background-color: orchid;
+    background-color: white;
     margin: auto;
     padding: 0px;
-    line-height: 1em;
     width: 76%;
-    border: 3px solid red;
-    box-shadow: black 10px 0px 15px;
+    border: 3px solid green;
+    box-shadow: black 10px 0px 15px,	
+		black -10px -10px 15px;
 
 }
 div#loginBanner { 
     margin: 10px auto;
     width: 50%;
-    border: 3px solid orange;
+    border: 3px solid blue;
 }
 div#loginBanner h1{ 
     text-align: center;
+    padding: 15px;
+    color: white;
+    background-color: palegreen;
 }
 
 div#loginContainer { 
@@ -35,6 +38,11 @@ div#loginContainer {
     border: 3px solid blue;
     position: relative;
 
+ }
+
+ label {
+     padding: 10px;
+     float: left;
  }
 
 div#loginContainer input[type=text],
