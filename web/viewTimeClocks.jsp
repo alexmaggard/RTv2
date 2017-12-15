@@ -34,6 +34,7 @@
             <div id="timeClockTablePanel">
                 <table id="timeClockTable">
                     <tr>
+                        <th>Employee ID</th>
                         <th>Day</th>
                         <th>Start Time</th>
                         <th>Lunch Start</th>
@@ -41,7 +42,6 @@
                         <th>End Time</th>
                         <th>Options</th>
                     </tr>
-                    
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <c:forEach var="timeClock" items="${timeClocks}">

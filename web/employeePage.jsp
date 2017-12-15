@@ -24,11 +24,12 @@
                 <table>
                     <tr>
                         <th>Date</th>
-                        <th>Start</th>
-                        <th colspan="2" id="lunchColumn">Lunch</th>
-                        <th>End</th>
+                        <th>Start Time</th>
+                        <th>Lunch Start</th>
+                        <th>Lunch End</th>
+                        <th>End Time</th>
                     </tr>
-                                    
+                   
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <c:forEach var="timeClock" items="${timeClocks}">
                     <tr>
@@ -37,7 +38,6 @@
                       <td>${timeClock.lunchOut}</td>
                       <td>${timeClock.lunchIn}</td>
                       <td>${timeClock.endTime}</td>
-                      
                     </tr>
                     </c:forEach>
                     

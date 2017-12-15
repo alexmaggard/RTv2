@@ -95,7 +95,7 @@ public class EmployeePageServlet extends HttpServlet {
             session.setAttribute("timeClock",timeClock);
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
-        //    url = "/viewTimeClocks.jsp";
+            url = "/employeePage.jsp";
         }
         
         getServletContext()
