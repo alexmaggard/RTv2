@@ -21,8 +21,16 @@
         <url-pattern>/timeclock</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>employeePageServlet</servlet-name>
+        <servlet-name>EmployeePageServlet</servlet-name>
         <url-pattern>/employeePageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TimeClocksServlet</servlet-name>
+        <servlet-class>RTv2.servlets.TimeClocksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerPageServlet</servlet-name>
+        <url-pattern>/managerPageServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
