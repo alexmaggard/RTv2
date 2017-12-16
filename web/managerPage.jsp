@@ -29,7 +29,7 @@
                      </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeClock" items="${timeClocks}">
+                    <c:forEach var="timeClock" items="${timeClock}">
                     <tr>
                       <td>${timeClock.day}</td>
                       <td>${timeClock.startTime}</td>
@@ -48,7 +48,7 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-            <a href="managerPageServlet" action="showMyHours"><button>Show My Hours</button></a>
+            <a href="managerPageServlet?action=showMyHours&amp;employeeID=${timeClock.employeeID}"><button>Show My Hours</button></a>
 
         </div>
     </body>

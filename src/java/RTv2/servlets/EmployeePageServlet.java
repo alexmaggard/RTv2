@@ -24,7 +24,12 @@ import javax.swing.JOptionPane;
  * @author Admin
  */
 
+<<<<<<< HEAD
 @WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
+=======
+@WebServlet(name = "employeePageServlet", urlPatterns = {"/employeePageServlet"})
+
+>>>>>>> origin/johnsBranch
 public class EmployeePageServlet extends HttpServlet {
 
    @Override
@@ -89,6 +94,7 @@ public class EmployeePageServlet extends HttpServlet {
         
         else if (action.equals("showMyHours")){
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            JOptionPane.showMessageDialog(null, employeeID);
             TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
             session.setAttribute("timeClock",timeClock);
             //TODO: add if statment to check authLevel based on

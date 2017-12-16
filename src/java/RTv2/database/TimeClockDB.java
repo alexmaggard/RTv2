@@ -70,7 +70,7 @@ public class TimeClockDB {
                     timeClock.setStartTime(rs.getString("StartTime"));
                     timeClock.setLunchOut(rs.getString("LunchOut"));
                     timeClock.setLunchIn(rs.getString("LunchIn"));
-                    timeClock.setEndTime(rs.getString("End"));
+                    timeClock.setEndTime(rs.getString("EndTime"));
                     
             }
             return timeClock;
