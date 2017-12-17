@@ -1,25 +1,20 @@
 <%-- 
-    Document   : manager
-    Created on : Nov 2, 2017, 3:21:46 PM
-    Author     : Alexander
+    Document   : clockInPage
+    Created on : Dec 17, 2017, 11:03:41 AM
+    Author     : amagg
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="styles/base.css" type="text/css"/>
-        <title>Manager View</title>
+        <link rel="stylesheet" href="styles/tables.css" type="text/css"/>
+        <title>Clock In Page</title>
     </head>
-    
     <body>
-        <div id="employeeBanner">
-            <!-- TODO: remove plain text from h1, h3 after datbase is connected -->
-            <h1>${employee.lastName}, ${employee.firstName}<h1>
-            <h3>Employee ID: ${employee.employeeID}</h3>
-         </div>
-         <div id="container">
-             <div id="timeTable">
+        <div id="timeTable">
                  <table>
                      <tr>
                          <th>Date</th>
@@ -41,17 +36,9 @@
                     </c:forEach>
                     
                 </table><br>
+                
+                <a href="managerPageServlet" action="clockIn"><button>Clock-In</button></a>
+                <a href="managerPageServlet" action="clockOut"><button>Clock-Out</button></a>
             </div><!-- END TIME TABLE -->
-        <div id="buttons">
-            <a href="managerPageServlet" action="clockIn"><button>Clock-In</button></a>
-            <a href="managerPageServlet" action="clockOut"><button>Clock-Out</button></a>
-            <button action="changePass">Change Password</button>
-            <a href="employee"><button>View Employees</button></a>
-            <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-            <a href="managerPageServlet" action="showMyHours"><button>Show My Hours</button></a>
-            <a href="managerPageServlet?action=showMyHours&amp;employeeID=${employee.employeeID}">Show My Hours</a>
-
-        </div>
     </body>
-    
 </html>

@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta charset=UTF-8">
-        <link rel="stylesheet" href="styles/viewEmployees.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/tables.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/base.css" type="text/css"/>
         <title>View TimeClocks</title>
     </head>
     

@@ -120,9 +120,7 @@ public class EmployeesServlet extends HttpServlet {
             EmployeeDB.insert(employee);
             
             url = "/viewEmployees.jsp";
-            
-            
-            
+  
         }
 
           else if (action.equals("changePassword")) {
