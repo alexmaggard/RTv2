@@ -48,8 +48,12 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
+<<<<<<< HEAD
             <a href="managerPageServlet" action="showMyHours"><button>Show My Hours</button></a>
             <a href="managerPageServlet?action=showMyHours&amp;employeeID=${employee.employeeID}">Show My Hours</a>
+=======
+            <a href="managerPageServlet?action=showMyHours&amp;employeeID=${timeClock.employeeID}"><button>Show My Hours</button></a>
+>>>>>>> origin/alexPCbranch
 
         </div>
     </body>
