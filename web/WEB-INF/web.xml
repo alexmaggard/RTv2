@@ -28,9 +28,21 @@
         <servlet-name>TimeClocksServlet</servlet-name>
         <servlet-class>RTv2.servlets.TimeClocksServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>managerPageServlet</servlet-name>
+        <servlet-class>RTv2.servlets.ManagerPageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerPageServlet</servlet-name>
         <url-pattern>/managerPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ClockInServlet</servlet-name>
+        <servlet-class>RTv2.servlets.ClockInServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClockInServlet</servlet-name>
+        <url-pattern>/clockInServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

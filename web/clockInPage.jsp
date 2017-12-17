@@ -24,7 +24,7 @@
                      </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeClock" items="${timeClock}">
+                    <c:forEach var="timeClock" items="${timeClocks}">
                     <tr>
                       <td>${timeClock.day}</td>
                       <td>${timeClock.startTime}</td>
@@ -37,8 +37,8 @@
                     
                 </table><br>
                 
-                <a href="managerPageServlet" action="clockIn"><button>Clock-In</button></a>
-                <a href="managerPageServlet" action="clockOut"><button>Clock-Out</button></a>
+                <a href="clockInServlet" action="clockIn"><button>Clock-In</button></a>
+                <a href="clockInServlet" action="clockOut"><button>Clock-Out</button></a>
             </div><!-- END TIME TABLE -->
     </body>
 </html>

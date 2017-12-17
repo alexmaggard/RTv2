@@ -8,7 +8,6 @@ package RTv2.servlets;
 import RTv2.database.TimeClockDB;
 import RTv2.objects.TimeClock;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -19,18 +18,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
-@WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
+/**
+ *
+ * @author amagg
+ */
+@WebServlet(name = "ClockInServlet", urlPatterns = {"/ClockInServlet"})
+public class ClockInServlet extends HttpServlet {
 
-public class EmployeePageServlet extends HttpServlet {
-
-   @Override
+    @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
     
-        String url = "/employeePage.jsp";
+        String url = "/clockInPage.jsp";
         
         // get current action
         String action = request.getParameter("action");
@@ -90,7 +92,7 @@ public class EmployeePageServlet extends HttpServlet {
             session.setAttribute("timeClock",timeClock);
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
-            url = "/employeePage.jsp";
+            url = "/clockInPage.jsp";
         }
         
         getServletContext()
