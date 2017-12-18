@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +21,34 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class TimeClockDB {
+    
+    public static int insertTimeClock(int employeeID) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        
+        String query = "INSERT INTO cs_workhours (DayID, StartTime, "
+                + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
+                + "(?, ?, ?, ?, ?, ?)";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, LocalDate.now().toString());
+            ps.setString(2, LocalTime.now().toString());
+            ps.setString(3, "LunchOut");
+            ps.setString(4, "LunchIn");
+            ps.setString(5, "EndTime");
+            ps.setInt(6, employeeID);
+            
+            return ps.executeUpdate();
+            
+        } catch(SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
     
     public static int updateTimeClock(TimeClock timeClock){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -28,7 +58,7 @@ public class TimeClockDB {
         String query = "UPDATE cs_workhours SET "
                 + "StartTime = ?, LunchOut = ?, "
                 + "LunchIn = ?, EndTime = ? "
-                + "WHERE EmployeeID = ?";
+                + "WHERE EmployeeID = ? AND DayID = ?";
         //TODO: find out if this should have employeeID field
         try {
             ps = connection.prepareStatement(query);
@@ -37,6 +67,7 @@ public class TimeClockDB {
             ps.setString(3, timeClock.getLunchIn());
             ps.setString(4, timeClock.getEndTime());
             ps.setInt(5, timeClock.getEmployeeID());
+            ps.setString(6, timeClock.getDayID());
 
             return ps.executeUpdate();
             
@@ -65,7 +96,6 @@ public class TimeClockDB {
             ArrayList<TimeClock> timeClocks = new ArrayList<>();
             while (rs.next()) {
                     TimeClock timeClock = new TimeClock();
-                    //timeClock.setEmployeeID(rs.getInt("EmployeeID"));
                     timeClock.setDayID(rs.getString("DayID"));
                     timeClock.setStartTime(rs.getString("StartTime"));
                     timeClock.setLunchOut(rs.getString("LunchOut"));
