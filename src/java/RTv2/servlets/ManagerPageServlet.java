@@ -67,13 +67,16 @@ public class ManagerPageServlet extends HttpServlet {
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String dayID = request.getParameter("dayID");
             String clockIn = request.getParameter("clockIn");
             String lunchOut = request.getParameter("lunchOut");
             String lunchIn = request.getParameter("lunchIn");
             String clockOut = request.getParameter("clockOut");
 
+            
             // get and update user
-            TimeClock timeClock = (TimeClock) session.getAttribute("employeeID"); 
+            TimeClock timeClock = (TimeClock) session.getAttribute("employeeID");
+            timeClock.setDayID(dayID);
             timeClock.setEmployeeID(employeeID);
             timeClock.setStartTime(clockIn);
             timeClock.setLunchOut(lunchOut);
@@ -106,6 +109,8 @@ public class ManagerPageServlet extends HttpServlet {
                 .getRequestDispatcher(url)
                 .forward(request, response);
     }
+    
+    
      
     @Override
     protected void doGet(HttpServletRequest request,
