@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +21,34 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class TimeClockDB {
+    
+    public static int insertTimeClock(int employeeID) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        
+        String query = "INSERT INTO cs_workhours (DayID, StartTime, "
+                + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
+                + "(?, ?, ?, ?, ?, ?)";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, LocalDate.now().toString());
+            ps.setString(2, LocalTime.now().toString());
+            ps.setString(3, "LunchOut");
+            ps.setString(4, "LunchIn");
+            ps.setString(5, "EndTime");
+            ps.setInt(6, employeeID);
+            
+            return ps.executeUpdate();
+            
+        } catch(SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
     
     public static int updateTimeClock(TimeClock timeClock){
         ConnectionPool pool = ConnectionPool.getInstance();

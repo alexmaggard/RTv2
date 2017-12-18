@@ -21,7 +21,7 @@ public class EmployeeDB {
         String query
                 = "INSERT INTO cs_employees (EmployeeID, FirstName, "
                 + "LastName, AuthLevel, Status, PayRate, "
-                +"Password) "
+                + "Password) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
