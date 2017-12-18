@@ -28,6 +28,10 @@
         <servlet-name>TimeClocksServlet</servlet-name>
         <servlet-class>RTv2.servlets.TimeClocksServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>managerPageServlet</servlet-name>
+        <servlet-class>RTv2.servlets.ManagerPageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerPageServlet</servlet-name>
         <url-pattern>/managerPageServlet</url-pattern>

@@ -21,13 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Admin
- */
-
 @WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
-//@WebServlet(name = "employeePageServlet", urlPatterns = {"/employeePageServlet"})
 
 public class EmployeePageServlet extends HttpServlet {
 

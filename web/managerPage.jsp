@@ -1,13 +1,7 @@
-<%-- 
-    Document   : manager
-    Created on : Nov 2, 2017, 3:21:46 PM
-    Author     : Alexander
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset=UTF-8">
         <link rel="stylesheet" href="styles/base.css" type="text/css"/>
         <title>Manager View</title>
     </head>
@@ -29,7 +23,7 @@
                      </tr>
                     
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeClock" items="${timeClock}">
+                    <c:forEach var="timeClock" items="${timeClocks}">
                     <tr>
                       <td>${timeClock.day}</td>
                       <td>${timeClock.startTime}</td>
@@ -48,12 +42,7 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-<<<<<<< HEAD
-            <a href="managerPageServlet" action="showMyHours"><button>Show My Hours</button></a>
-            <a href="managerPageServlet?action=showMyHours&amp;employeeID=${employee.employeeID}">Show My Hours</a>
-=======
-            <a href="managerPageServlet?action=showMyHours&amp;employeeID=${timeClock.employeeID}"><button>Show My Hours</button></a>
->>>>>>> origin/alexPCbranch
+            
 
         </div>
     </body>
