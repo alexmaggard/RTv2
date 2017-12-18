@@ -36,14 +36,6 @@
         <servlet-name>ManagerPageServlet</servlet-name>
         <url-pattern>/managerPageServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>ClockInServlet</servlet-name>
-        <servlet-class>RTv2.servlets.ClockInServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ClockInServlet</servlet-name>
-        <url-pattern>/clockInServlet</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -5,7 +5,9 @@
  */
 package RTv2.servlets;
 
+import RTv2.database.EmployeeDB;
 import RTv2.database.TimeClockDB;
+import RTv2.objects.Employee;
 import RTv2.objects.TimeClock;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -86,11 +88,18 @@ public class ManagerPageServlet extends HttpServlet {
         
         else if (action.equals("showMyHours")){
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-            TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
-            session.setAttribute("timeClock",timeClock);
+            
+            JOptionPane.showMessageDialog(null, employeeID);
+            
+            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID);
+            
+            Employee employee = EmployeeDB.selectEmployee(employeeID);
+            
+            request.setAttribute("timeClocks",timeClock);      
+            request.setAttribute("employee",employee);
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
-            url = "/clockInPage.jsp";
+            url = "/managerPage.jsp";
         }
         
         getServletContext()

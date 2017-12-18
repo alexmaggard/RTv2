@@ -42,7 +42,7 @@
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>
             <a href="addEmployeePage.jsp"><button> Add Employee</button></a>
-            <a href="clockInServlet?action=showMyHours&amp;employeeID=${employee.employeeID}"><button>Show My Hours</button></a>
+            
 
         </div>
     </body>

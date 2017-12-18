@@ -21,17 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
-<<<<<<< HEAD
 @WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
-=======
-/**
- *
- * @author Admin
- */
-
-@WebServlet(name = "EmployeePageServlet", urlPatterns = {"/employeePageServlet"})
-//@WebServlet(name = "employeePageServlet", urlPatterns = {"/employeePageServlet"})
->>>>>>> origin/johnsBranch
 
 public class EmployeePageServlet extends HttpServlet {
 
