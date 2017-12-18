@@ -28,7 +28,7 @@ public class TimeClockDB {
         String query = "UPDATE cs_workhours SET "
                 + "StartTime = ?, LunchOut = ?, "
                 + "LunchIn = ?, EndTime = ? "
-                + "WHERE EmployeeID = ?";
+                + "WHERE EmployeeID = ? AND DayID = ?";
         //TODO: find out if this should have employeeID field
         try {
             ps = connection.prepareStatement(query);
@@ -37,6 +37,7 @@ public class TimeClockDB {
             ps.setString(3, timeClock.getLunchIn());
             ps.setString(4, timeClock.getEndTime());
             ps.setInt(5, timeClock.getEmployeeID());
+            ps.setString(6, timeClock.getDayID());
 
             return ps.executeUpdate();
             
@@ -65,7 +66,6 @@ public class TimeClockDB {
             ArrayList<TimeClock> timeClocks = new ArrayList<>();
             while (rs.next()) {
                     TimeClock timeClock = new TimeClock();
-                    //timeClock.setEmployeeID(rs.getInt("EmployeeID"));
                     timeClock.setDayID(rs.getString("DayID"));
                     timeClock.setStartTime(rs.getString("StartTime"));
                     timeClock.setLunchOut(rs.getString("LunchOut"));

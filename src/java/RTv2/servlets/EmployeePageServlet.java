@@ -72,6 +72,7 @@ public class EmployeePageServlet extends HttpServlet {
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String dayID = request.getParameter("dayID");
             String clockIn = request.getParameter("clockIn");
             String lunchOut = request.getParameter("lunchOut");
             String lunchIn = request.getParameter("lunchIn");
@@ -80,6 +81,7 @@ public class EmployeePageServlet extends HttpServlet {
             // get and update user
             TimeClock timeClock = (TimeClock) session.getAttribute("employeeID"); 
             timeClock.setEmployeeID(employeeID);
+            timeClock.setDayID(dayID);
             timeClock.setStartTime(clockIn);
             timeClock.setLunchOut(lunchOut);
             timeClock.setLunchIn(lunchIn);
@@ -88,20 +90,22 @@ public class EmployeePageServlet extends HttpServlet {
 
             // get and set updated users
             ArrayList<TimeClock> timeClocks = TimeClockDB.selectTimeClocks();            
-            request.setAttribute("timeClocks", timeClocks);            
+            request.setAttribute("timeClocks", timeClocks);       
         }
         
         else if (action.equals("showMyHours")){
-            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            int employeeID = Integer.parseInt(request.getParameter("employeeID")); //get the employeeID in the employeePage.jsp
             
             JOptionPane.showMessageDialog(null, employeeID);
             
-            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID);
+            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID); //this gets all the employee's time clocked in
             
-            Employee employee = EmployeeDB.selectEmployee(employeeID);
+            Employee employee = EmployeeDB.selectEmployee(employeeID); //get employee object
             
-            request.setAttribute("timeClocks",timeClock);      
+            request.setAttribute("timeClocks",timeClock);
+            
             request.setAttribute("employee",employee);
+            
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
             url = "/employeePage.jsp";
