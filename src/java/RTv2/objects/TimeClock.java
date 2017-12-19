@@ -10,11 +10,12 @@ public class TimeClock implements Serializable{
     private String lunchOut;
     private String lunchIn;
     private String endTime;
+    private int workStatus;
     
     public TimeClock(){}
     
     public TimeClock(int employeeID, String dayID, String startTime, String lunchOut, 
-                    String lunchIn, String endTime){
+                    String lunchIn, String endTime, int workStatus){
         
         this.employeeID = employeeID;
         this.dayID = dayID;
@@ -22,6 +23,7 @@ public class TimeClock implements Serializable{
         this.lunchOut = lunchOut;
         this.lunchIn = lunchIn;
         this.endTime = endTime;
+        this.workStatus = workStatus;
     }
 
     public int getEmployeeID() {
@@ -70,6 +72,20 @@ public class TimeClock implements Serializable{
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    /**
+     * @return the workStatus
+     */
+    public int getWorkStatus() {
+        return workStatus;
+    }
+
+    /**
+     * @param workStatus the workStatus to set
+     */
+    public void setWorkStatus(int workStatus) {
+        this.workStatus = workStatus;
     }
     
 }

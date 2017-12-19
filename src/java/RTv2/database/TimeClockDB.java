@@ -40,98 +40,32 @@ public class TimeClockDB {
             Employee employee = null;
             TimeClock timeClock = null;
             employee = EmployeeDB.selectEmployee(employeeID);
-        
-        //employees are set to 0 status by default
-        //at first clockIn they will have day and start time generated
-        if(employee.getStatus()==0){
-            String query = "INSERT INTO cs_workhours (DayID, StartTime, "
-                    + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
-                    + "(?, ?, ?, ?, ?, ?)";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, dayFormat.format(aDate));
-                ps.setString(2, timeFormat.format(aDate));
-                ps.setString(3, "");
-                ps.setString(4, "");
-                ps.setString(5, "");
-                ps.setInt(6, employeeID);
-                employee.setStatus(1);
-                return ps.executeUpdate();
+            
+            if(timeClock.getWorkStatus()==0){
+                String query = "INSERT INTO cs_workhours (DayID, StartTime, "
+                        + "LunchOut, LunchIn, EndTime, EmployeeID, WorkStatus) VALUES "
+                        + "(?, ?, ?, ?, ?, ?, ?)";
+                try {
+                    ps = connection.prepareStatement(query);
+                    ps.setString(1, dayFormat.format(aDate));
+                    ps.setString(2, timeFormat.format(aDate));
+                    ps.setString(3, "");
+                    ps.setString(4, "");
+                    ps.setString(5, "");
+                    ps.setInt(6, employeeID);
+                    ps.setInt(7, 1);
+                    return ps.executeUpdate();
 
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
+                } catch(SQLException e) {
+                    System.out.println(e);
+                    return 0;
+                } finally {
+                    DBUtil.closePreparedStatement(ps);
+                    pool.freeConnection(connection);
+                }
             }
-        }
-        //when the employee leaves for lunch they will add a clockin to the lunchout section
-        else if(employee.getStatus()==1){
-            String query = "UPDATE cs_workhours SET "
-                    +"LunchOut = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(2);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        //upon returning from lunch they will put a clockin in the lunchIn slot
-        else if(employee.getStatus()==2){
-            String query = "UPDATE cs_workhours SET "
-                    +"LunchIn = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(3);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        //at the end of the day when you clock out the last time will go into EndTime and reset your status to 0
-        else if(employee.getStatus()==3){
-            String query = "UPDATE cs_workhours SET "
-                    +"EndTime = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(0);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        return 0;
-        
-    }
+            return 0;
+    }//END:insertTimeClock()
     
     public static int updateTimeClock(TimeClock timeClock){
         ConnectionPool pool = ConnectionPool.getInstance();
