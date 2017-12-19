@@ -33,10 +33,9 @@ public class TimeClockDB {
         SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
         SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
         Date aDate = new Date();
-
             Employee employee = null;
-            TimeClock timeClock = null;
             employee = EmployeeDB.selectEmployee(employeeID);
+            
             if(timeClock.getWorkStatus()==0){
                 String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                         + "LunchOut, LunchIn, EndTime, EmployeeID, WorkStatus) VALUES "
@@ -114,6 +113,7 @@ public class TimeClockDB {
                     timeClock.setLunchOut(rs.getString("LunchOut"));
                     timeClock.setLunchIn(rs.getString("LunchIn"));
                     timeClock.setEndTime(rs.getString("EndTime"));
+                    timeClock.setWorkStatus(rs.getInt("WorkStatus"));
                     timeClocks.add(timeClock);
             }
             return timeClocks;
