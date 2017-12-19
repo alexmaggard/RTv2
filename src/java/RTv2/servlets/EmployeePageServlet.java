@@ -47,7 +47,9 @@ public class EmployeePageServlet extends HttpServlet {
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
             Employee employee = EmployeeDB.selectEmployee(employeeID);
             JOptionPane.showMessageDialog(null, employeeID);
+            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID);
             TimeClockDB.insertTimeClock(employeeID);
+            request.setAttribute("timeClocks",timeClock);
             request.setAttribute("employee",employee);
             url = "/employeePage.jsp";
         }
