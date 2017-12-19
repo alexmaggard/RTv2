@@ -7,7 +7,7 @@
               maxIdle="30" maxWait="10000" 
               name="jdbc/capstone"
               username="root"
-              password="" 
+              password="sesame" 
               removeAbandoned="true" removeAbandonedTimeout="60" 
               type="javax.sql.DataSource" 
               url="jdbc:mysql://localhost:3306/capstone" />
