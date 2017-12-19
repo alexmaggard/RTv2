@@ -85,8 +85,6 @@ public class EmployeeDB {
         PreparedStatement ps = null;
         ResultSet rs = null; 
         
-        JOptionPane.showMessageDialog(null, "Password and id: " + verifyPassword + " " + verifyID);
-
         String query = "SELECT * FROM cs_employees "
                 + "WHERE EmployeeID = ? AND Password = ?";
       try {
@@ -104,11 +102,10 @@ public class EmployeeDB {
                     employee.setLastName(rs.getString("LastName"));
                     employee.setStatus(rs.getBoolean("Status"));
             }
-            JOptionPane.showMessageDialog(null, "Employee: " + employee.getFirstName());
             return employee;
         } catch (SQLException | NullPointerException e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(null, "wrong ID or password");
+            JOptionPane.showMessageDialog(null, "Wrong ID or password");
             return null;
         } finally {
             DBUtil.closeResultSet(rs);
