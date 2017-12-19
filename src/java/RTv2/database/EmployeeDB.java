@@ -29,7 +29,7 @@ public class EmployeeDB {
             ps.setString(2, employee.getFirstName());
             ps.setString(3, employee.getLastName());
             ps.setInt(4, employee.getAuthLevel());
-            ps.setInt(5, employee.getStatus());
+            ps.setBoolean(5, employee.getStatus());
             ps.setDouble(6, employee.getPayRate());
             ps.setString(7, "password");//set password default to password
 
@@ -63,7 +63,7 @@ public class EmployeeDB {
             ps.setString(2, employee.getLastName());
             ps.setDouble(3, employee.getPayRate());
             ps.setInt(4, employee.getAuthLevel());
-            ps.setInt(5, employee.getStatus());
+            ps.setBoolean(5, employee.getStatus());
             ps.setInt(6, employee.getEmployeeID());
 
             return ps.executeUpdate();
@@ -102,7 +102,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("PayRate"));
                     employee.setFirstName(rs.getString("FirstName"));
                     employee.setLastName(rs.getString("LastName"));
-                    employee.setStatus(rs.getInt("Status"));
+                    employee.setStatus(rs.getBoolean("Status"));
             }
             JOptionPane.showMessageDialog(null, "Employee: " + employee.getFirstName());
             return employee;
@@ -161,7 +161,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("PayRate"));
                     employee.setFirstName(rs.getString("FirstName"));
                     employee.setLastName(rs.getString("LastName"));
-                    employee.setStatus(rs.getInt("Status"));
+                    employee.setStatus(rs.getBoolean("Status"));
             }
             return employee;
         } catch (SQLException e) {
@@ -193,7 +193,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("payRate"));
                     employee.setFirstName(rs.getString("firstName"));
                     employee.setLastName(rs.getString("lastName"));
-                    employee.setStatus(rs.getInt("status"));
+                    employee.setStatus(rs.getBoolean("status"));
                     employees.add(employee);
                 }
             return employees;
