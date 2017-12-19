@@ -5,7 +5,9 @@
  */
 package RTv2.servlets;
 
+import RTv2.database.EmployeeDB;
 import RTv2.database.TimeClockDB;
+import RTv2.objects.Employee;
 import RTv2.objects.TimeClock;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +46,13 @@ public class ManagerPageServlet extends HttpServlet {
         
         if (action.equals("clockIn")) {
             TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
-            //if dayID.equals("")
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            Employee employee = EmployeeDB.selectEmployee(employeeID);
+            JOptionPane.showMessageDialog(null, employeeID);
+            
+            
+            TimeClockDB.insertTimeClock(employeeID);
+            /*if dayID.equals("")
             //setAttribute for dayID
             if (timeClock.getStartTime().equals("")){
                 timeClock.setStartTime(LocalTime.now().toString());
@@ -59,19 +67,26 @@ public class ManagerPageServlet extends HttpServlet {
             } else if (timeClock.getEndTime().equals("")){
                 timeClock.setEndTime(LocalTime.now().toString());
             } else
-                JOptionPane.showMessageDialog(null, "Please Clock In.");
+                JOptionPane.showMessageDialog(null, "Please Clock In.");*/
+            
+            request.setAttribute("employee",employee);
+            
+            url = "/managerPage.jsp";
         }
         
         else if (action.equals("update_timeClock")) {
             // get parameters from the request
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String dayID = request.getParameter("dayID");
             String clockIn = request.getParameter("clockIn");
             String lunchOut = request.getParameter("lunchOut");
             String lunchIn = request.getParameter("lunchIn");
             String clockOut = request.getParameter("clockOut");
 
+            
             // get and update user
-            TimeClock timeClock = (TimeClock) session.getAttribute("employeeID"); 
+            TimeClock timeClock = (TimeClock) session.getAttribute("employeeID");
+            timeClock.setDayID(dayID);
             timeClock.setEmployeeID(employeeID);
             timeClock.setStartTime(clockIn);
             timeClock.setLunchOut(lunchOut);
@@ -86,8 +101,15 @@ public class ManagerPageServlet extends HttpServlet {
         
         else if (action.equals("showMyHours")){
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
-            TimeClock timeClock = TimeClockDB.selectTimeClock(employeeID);
-            session.setAttribute("timeClock",timeClock);
+            
+            JOptionPane.showMessageDialog(null, employeeID);
+            
+            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID);
+            
+            Employee employee = EmployeeDB.selectEmployee(employeeID);
+            
+            request.setAttribute("timeClocks",timeClock);      
+            request.setAttribute("employee",employee);
             //TODO: add if statment to check authLevel based on
             //authLevel choose either manager or employee.jsp...
             url = "/managerPage.jsp";
@@ -97,6 +119,8 @@ public class ManagerPageServlet extends HttpServlet {
                 .getRequestDispatcher(url)
                 .forward(request, response);
     }
+    
+    
      
     @Override
     protected void doGet(HttpServletRequest request,

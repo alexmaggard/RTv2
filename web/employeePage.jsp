@@ -24,20 +24,20 @@
                 <table>
                     <tr>
                         <th>Date</th>
-                        <th>Start</th>
-                        <th colspan="2" id="lunchColumn">Lunch</th>
-                        <th>End</th>
+                        <th>Start Time</th>
+                        <th>Lunch Start</th>
+                        <th>Lunch End</th>
+                        <th>End Time</th>
                     </tr>
-                                    
+                   
                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <c:forEach var="timeClock" items="${timeClock}">
+                    <c:forEach var="timeClock" items="${timeClocks}">
                     <tr>
-                      <td>${timeClock.day}</td>
+                      <td>${timeClock.dayID}</td>
                       <td>${timeClock.startTime}</td>
                       <td>${timeClock.lunchOut}</td>
                       <td>${timeClock.lunchIn}</td>
                       <td>${timeClock.endTime}</td>
-                      
                     </tr>
                     </c:forEach>
                     
@@ -45,11 +45,12 @@
             </div><!-- END TIME TABLE -->
             
             <div id="buttons">
-                <button action="timeclock" value="Clock-In" action="clockIn">Clock-In</button>
+                <a href="employeePageServlet?action=clockIn&amp;employeeID=${employee.employeeID}"><button>Clock-In</button></a>
                 <button action="timeclock" value ="Clock-Out" action="clockOut">Clock-Out</button>
                 <button value="Change Password" action="changePass">Change Password</button>
+                <a href="employeePageServlet?action=showMyHours&amp;employeeID=${employee.employeeID}"/><button>Show My Hours</button></a>
+            </a>
             </div>
          </div>
     </body>
-    
 </html>

@@ -12,7 +12,7 @@
         
         <div id="loginContainer">
            <form action="employee" method="post">
-            <input type="hidden" name="action" value="verifyLogIn">      
+            <input type="hidden" name="action" value="verifyLogIn">   
                 <label>Employee ID:</label><br>
                     <input type="text" name="loginID"><br>
                 <label>Password:</label><br>

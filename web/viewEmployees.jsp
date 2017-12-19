@@ -55,8 +55,10 @@
                         </c:forEach>
 
                 </table>
-                        <p><a href="employee"><button>Refresh Employees</button></a>
-                            <a href="addEmployeePage.jsp"><button>Add Employee</button></a></p>
+                        <p>
+                            <a href="employee"><button>Refresh Employees</button></a>
+                            <a href="addEmployeePage.jsp"><button>Add Employee</button></a>
+                        </p>
             </div>
                
     </body>

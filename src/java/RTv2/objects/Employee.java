@@ -9,13 +9,13 @@ public class Employee implements Serializable{
     private String lastName;
     private String password;
     private int authLevel;
-    private boolean status;
+    public int status;
     private double payRate;
     
     public Employee(){}
 
     public Employee(int employeeID, String firstName, String lastName, 
-                    String password, int authLevel, boolean status, 
+                    String password, int authLevel, int status, 
                     double payRate){
         
         this.employeeID = employeeID;
@@ -67,11 +67,11 @@ public class Employee implements Serializable{
         this.authLevel = authLevel;
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
