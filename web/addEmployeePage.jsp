@@ -26,7 +26,7 @@
                     <input type="text" name="authLevel" value="${employee.authLevel}"><br>
                     <label class="pad_top">Pay Rate:</label>
                     <input type="text" name="payRate" value="${employee.payRate}"><br>
-                    <input href ="employee" type="submit" value="Update" action="add_employee">
+                    <input href ="employee" type="submit" value="Add Employee" action="add_employee">
                 </form>
         
     </body>
