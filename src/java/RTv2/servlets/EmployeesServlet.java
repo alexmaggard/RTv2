@@ -51,7 +51,7 @@ public class EmployeesServlet extends HttpServlet {
             String lastName = request.getParameter("lastName");
             String password = request.getParameter("password");
             int authLevel = Integer.parseInt(request.getParameter("authLevel"));
-            boolean status = Boolean.parseBoolean(request.getParameter("status"));
+            int status = Integer.parseInt(request.getParameter("status"));
             double payRate = Double.parseDouble(request.getParameter("payRate"));
 
             // get and update employee
@@ -109,7 +109,7 @@ public class EmployeesServlet extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             int authLevel = Integer.parseInt(request.getParameter("authLevel"));
-            boolean status = Boolean.parseBoolean(request.getParameter("status"));
+            int status = Integer.parseInt(request.getParameter("status"));
             String password = request.getParameter("password");
             double payRate = Double.parseDouble(request.getParameter("payRate"));
             
