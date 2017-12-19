@@ -5,6 +5,7 @@
  */
 package RTv2.database;
 
+import RTv2.objects.Employee;
 import RTv2.objects.TimeClock;
 import RTv2.utilities.ConnectionPool;
 import RTv2.utilities.DBUtil;
@@ -12,9 +13,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -22,18 +25,22 @@ import java.util.ArrayList;
  */
 public class TimeClockDB {
     
+    
     public static int insertTimeClock(int employeeID) {
+        SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
+        Date aDate = new Date();
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        
+       
         String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                 + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
                 + "(?, ?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, LocalDate.now().toString());
-            ps.setString(2, LocalTime.now().toString());
+            ps.setString(1, dayFormat.format(aDate));
+            ps.setString(2, timeFormat.format(aDate));
             ps.setString(3, "LunchOut");
             ps.setString(4, "LunchIn");
             ps.setString(5, "EndTime");

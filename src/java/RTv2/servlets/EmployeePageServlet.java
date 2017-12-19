@@ -44,32 +44,11 @@ public class EmployeePageServlet extends HttpServlet {
         }
         
         if (action.equals("clockIn")) {
-            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
             Employee employee = EmployeeDB.selectEmployee(employeeID);
             JOptionPane.showMessageDialog(null, employeeID);
-            
             TimeClockDB.insertTimeClock(employeeID);
-            //if dayID.equals("")
-            //setAttribute for dayID
-    /*        if (timeClock.getStartTime().equals("")){
-                timeClock.setStartTime(LocalTime.now().toString());
-            } else if (timeClock.getLunchIn().equals("")){
-                timeClock.setLunchIn(LocalTime.now().toString());
-            } else
-                JOptionPane.showMessageDialog(null, "Please Clock Out.");
-        } else if (action.equals("clockOut")) {
-            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
-            if (timeClock.getLunchOut().equals("")){
-                timeClock.setLunchOut(LocalTime.now().toString());
-            } else if (timeClock.getEndTime().equals("")){
-                timeClock.setEndTime(LocalTime.now().toString());
-            } else
-                JOptionPane.showMessageDialog(null, "Please Clock In.");*/
             request.setAttribute("employee",employee);
-            
-            //TODO: add if statment to check authLevel based on
-            //authLevel choose either manager or employee.jsp...
             url = "/employeePage.jsp";
         }
         
