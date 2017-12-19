@@ -9,7 +9,7 @@ public class Employee implements Serializable{
     private String lastName;
     private String password;
     private int authLevel;
-    private int status;
+    public int status;
     private double payRate;
     
     public Employee(){}
