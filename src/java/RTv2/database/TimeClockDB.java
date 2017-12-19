@@ -28,19 +28,15 @@ public class TimeClockDB {
         
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null; 
+        PreparedStatement ps = null; 
 
         SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
         SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
         Date aDate = new Date();
-        pool = ConnectionPool.getInstance();
-        connection = pool.getConnection();
-        ps = null;
+
             Employee employee = null;
             TimeClock timeClock = null;
             employee = EmployeeDB.selectEmployee(employeeID);
-            
             if(timeClock.getWorkStatus()==0){
                 String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                         + "LunchOut, LunchIn, EndTime, EmployeeID, WorkStatus) VALUES "
