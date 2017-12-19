@@ -23,27 +23,37 @@ import java.util.Date;
  */
 public class TimeClockDB {
     
+    public static int checkTimes (TimeClock timeClock) {
+        if(timeClock.getStartTime().equals("")) {
+            
+        }
+        else if (timeClock.getLunchOut().equals("")) {
+            
+        }
+        else if (timeClock.getLunchIn().equals("")) {
+            
+        }
+        else if (timeClock.getEndTime().equals("")) {
+            
+        }
+        else
+            
+            return 0;
+    }
     
     public static int insertTimeClock(int employeeID) {
         
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        ResultSet rs = null; 
-
+        
         SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
         SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
         Date aDate = new Date();
         pool = ConnectionPool.getInstance();
         connection = pool.getConnection();
         ps = null;
-            Employee employee = null;
-            TimeClock timeClock = null;
-            employee = EmployeeDB.selectEmployee(employeeID);
         
-        //employees are set to 0 status by default
-        //at first clockIn they will have day and start time generated
-        if(employee.getStatus()==0){
             String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                     + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
                     + "(?, ?, ?, ?, ?, ?)";
@@ -55,7 +65,6 @@ public class TimeClockDB {
                 ps.setString(4, "");
                 ps.setString(5, "");
                 ps.setInt(6, employeeID);
-                employee.setStatus(1);
                 return ps.executeUpdate();
 
             } catch(SQLException e) {
@@ -66,72 +75,6 @@ public class TimeClockDB {
                 pool.freeConnection(connection);
             }
         }
-        //when the employee leaves for lunch they will add a clockin to the lunchout section
-        else if(employee.getStatus()==1){
-            String query = "UPDATE cs_workhours SET "
-                    +"LunchOut = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(2);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        //upon returning from lunch they will put a clockin in the lunchIn slot
-        else if(employee.getStatus()==2){
-            String query = "UPDATE cs_workhours SET "
-                    +"LunchIn = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(3);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        //at the end of the day when you clock out the last time will go into EndTime and reset your status to 0
-        else if(employee.getStatus()==3){
-            String query = "UPDATE cs_workhours SET "
-                    +"EndTime = ? "
-                    +"WHERE EmployeeID = ? AND DayID = ?";
-            try {
-                ps = connection.prepareStatement(query);
-                ps.setString(1, timeFormat.format(aDate));
-                ps.setInt(2, employeeID);
-                ps.setString(3, timeClock.getDayID());
-                employee.setStatus(0);
-                return ps.executeUpdate();
-
-            } catch(SQLException e) {
-                System.out.println(e);
-                return 0;
-            } finally {
-                DBUtil.closePreparedStatement(ps);
-                pool.freeConnection(connection);
-            }
-        }
-        return 0;
-        
-    }
     
     public static int updateTimeClock(TimeClock timeClock){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -162,6 +105,40 @@ public class TimeClockDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<TimeClock> selectOneTimeClock(String DayID) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+           
+        ResultSet rs = null;
+        
+        String query = "SELECT * FROM cs_workhours WHERE DayID = ?";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, DayID);
+            rs = ps.executeQuery();
+            ArrayList<TimeClock> timeClocks = new ArrayList<>();
+                    TimeClock timeClock = new TimeClock();
+                    timeClock.setDayID(rs.getString("DayID"));
+                    timeClock.setStartTime(rs.getString("StartTime"));
+                    timeClock.setLunchOut(rs.getString("LunchOut"));
+                    timeClock.setLunchIn(rs.getString("LunchIn"));
+                    timeClock.setEndTime(rs.getString("EndTime"));
+                    timeClocks.add(timeClock);
+            return timeClocks;
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     //select timeclock based on employeeID
     public static ArrayList<TimeClock> selectTimeClock(int employeeID){
         ConnectionPool pool = ConnectionPool.getInstance();
