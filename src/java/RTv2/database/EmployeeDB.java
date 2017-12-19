@@ -63,7 +63,7 @@ public class EmployeeDB {
             ps.setString(2, employee.getLastName());
             ps.setDouble(3, employee.getPayRate());
             ps.setInt(4, employee.getAuthLevel());
-            ps.setBoolean(5, employee.getStatus());
+            ps.setInt(5, employee.getStatus());
             ps.setInt(6, employee.getEmployeeID());
 
             return ps.executeUpdate();
@@ -102,7 +102,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("PayRate"));
                     employee.setFirstName(rs.getString("FirstName"));
                     employee.setLastName(rs.getString("LastName"));
-                    employee.setStatus(rs.getBoolean("Status"));
+                    employee.setStatus(rs.getInt("Status"));
             }
             JOptionPane.showMessageDialog(null, "Employee: " + employee.getFirstName());
             return employee;
@@ -161,7 +161,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("PayRate"));
                     employee.setFirstName(rs.getString("FirstName"));
                     employee.setLastName(rs.getString("LastName"));
-                    employee.setStatus(rs.getBoolean("Status"));
+                    employee.setStatus(rs.getInt("Status"));
             }
             return employee;
         } catch (SQLException e) {
@@ -193,7 +193,7 @@ public class EmployeeDB {
                     employee.setPayRate(rs.getDouble("payRate"));
                     employee.setFirstName(rs.getString("firstName"));
                     employee.setLastName(rs.getString("lastName"));
-                    employee.setStatus(rs.getBoolean("status"));
+                    employee.setStatus(rs.getInt("status"));
                     employees.add(employee);
                 }
             return employees;

@@ -52,28 +52,7 @@ public class TimeClocksServlet extends HttpServlet {
         if(action == null){
             action = "display_timeClocks";
         }
-        
-        
-        if (action.equals("clockIn")) {
-            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
-            //if dayID.equals("")
-            //setAttribute for dayID
-            if (timeClock.getStartTime().equals("")){
-                timeClock.setStartTime(LocalTime.now().toString());
-            } else if (timeClock.getLunchIn().equals("")){
-                timeClock.setLunchIn(LocalTime.now().toString());
-            } else
-                JOptionPane.showMessageDialog(null, "Please Clock Out.");
-        } else if (action.equals("clockOut")) {
-            TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
-            if (timeClock.getLunchOut().equals("")){
-                timeClock.setLunchOut(LocalTime.now().toString());
-            } else if (timeClock.getEndTime().equals("")){
-                timeClock.setEndTime(LocalTime.now().toString());
-            } else
-                JOptionPane.showMessageDialog(null, "Please Clock In.");
-        }
-        
+
         if (action.equals("display_timeClocks")) {            
             // get list of users
             ArrayList<TimeClock> timeClocks = TimeClockDB.selectTimeClocks();            
