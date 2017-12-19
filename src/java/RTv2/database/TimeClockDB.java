@@ -23,11 +23,29 @@ import java.util.Date;
  */
 public class TimeClockDB {
     
+    public static int checkTimes (TimeClock timeClock) {
+        if(timeClock.getStartTime().equals("")) {
+            
+        }
+        else if (timeClock.getLunchOut().equals("")) {
+            
+        }
+        else if (timeClock.getLunchIn().equals("")) {
+            
+        }
+        else if (timeClock.getEndTime().equals("")) {
+            
+        }
+        else
+            
+            return 0;
+    }
     
     public static int insertTimeClock(int employeeID) {
         
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
+<<<<<<< HEAD
         PreparedStatement ps = null; 
 
         SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
@@ -50,6 +68,29 @@ public class TimeClockDB {
                     ps.setInt(6, employeeID);
                     ps.setInt(7, 1);
                     return ps.executeUpdate();
+=======
+        PreparedStatement ps = null;
+        
+        SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
+        Date aDate = new Date();
+        pool = ConnectionPool.getInstance();
+        connection = pool.getConnection();
+        ps = null;
+        
+            String query = "INSERT INTO cs_workhours (DayID, StartTime, "
+                    + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
+                    + "(?, ?, ?, ?, ?, ?)";
+            try {
+                ps = connection.prepareStatement(query);
+                ps.setString(1, dayFormat.format(aDate));
+                ps.setString(2, timeFormat.format(aDate));
+                ps.setString(3, "");
+                ps.setString(4, "");
+                ps.setString(5, "");
+                ps.setInt(6, employeeID);
+                return ps.executeUpdate();
+>>>>>>> johnsBranch
 
                 } catch(SQLException e) {
                     System.out.println(e);
@@ -59,8 +100,12 @@ public class TimeClockDB {
                     pool.freeConnection(connection);
                 }
             }
+<<<<<<< HEAD
             return 0;
     }//END:insertTimeClock()
+=======
+        }
+>>>>>>> johnsBranch
     
     public static int updateTimeClock(TimeClock timeClock){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -91,6 +136,40 @@ public class TimeClockDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<TimeClock> selectOneTimeClock(String DayID) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+           
+        ResultSet rs = null;
+        
+        String query = "SELECT * FROM cs_workhours WHERE DayID = ?";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, DayID);
+            rs = ps.executeQuery();
+            ArrayList<TimeClock> timeClocks = new ArrayList<>();
+                    TimeClock timeClock = new TimeClock();
+                    timeClock.setDayID(rs.getString("DayID"));
+                    timeClock.setStartTime(rs.getString("StartTime"));
+                    timeClock.setLunchOut(rs.getString("LunchOut"));
+                    timeClock.setLunchIn(rs.getString("LunchIn"));
+                    timeClock.setEndTime(rs.getString("EndTime"));
+                    timeClocks.add(timeClock);
+            return timeClocks;
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     //select timeclock based on employeeID
     public static ArrayList<TimeClock> selectTimeClock(int employeeID){
         ConnectionPool pool = ConnectionPool.getInstance();

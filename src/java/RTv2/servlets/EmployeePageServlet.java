@@ -11,8 +11,10 @@ import RTv2.objects.Employee;
 import RTv2.objects.TimeClock;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,16 +40,27 @@ public class EmployeePageServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         JOptionPane.showMessageDialog(null, action);
-        
+        Date aDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat ("MM/dd/yy");
         if(action == null){
             action = "showMyHours";
         }
         
         if (action.equals("clockIn")) {
             int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            String DayID = sdf.format(aDate);
+            
             Employee employee = EmployeeDB.selectEmployee(employeeID);
-            JOptionPane.showMessageDialog(null, employeeID);
+            JOptionPane.showMessageDialog(null, employeeID+"\n"+DayID);
+           
+            
+            ArrayList<TimeClock> timeClock = TimeClockDB.selectTimeClock(employeeID);
+            
+            ArrayList<TimeClock> selectOne = TimeClockDB.selectOneTimeClock(DayID);
+            TimeClockDB.checkTimes(selectOne);
+            
             TimeClockDB.insertTimeClock(employeeID);
+            request.setAttribute("timeClocks",timeClock);
             request.setAttribute("employee",employee);
             url = "/employeePage.jsp";
         }
