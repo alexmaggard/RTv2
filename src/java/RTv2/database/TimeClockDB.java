@@ -36,6 +36,10 @@ public class TimeClockDB {
         
         //employees are set to 0 status by default
         //at first clockIn they will have day and start time generated
+        
+        employee = EmployeeDB.selectEmployee(employeeID);
+        
+        
         if(employee.getStatus()==0){
             String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                     + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
@@ -59,6 +63,7 @@ public class TimeClockDB {
                 pool.freeConnection(connection);
             }
         }
+        
         //when the employee leaves for lunch they will add a clockin to the lunchout section
         else if(employee.getStatus()==1){
             String query = "UPDATE cs_workhours SET "
