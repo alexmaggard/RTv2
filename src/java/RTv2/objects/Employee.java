@@ -14,17 +14,16 @@ public class Employee implements Serializable{
     
     public Employee(){}
 
-    public Employee(int employeeID, String firstName, String lastName, 
-                    String password, int authLevel, int status, 
-                    double payRate){
+    public Employee(int employeeID, String firstName, String lastName,
+            int authLevel, int status, String password, double payRate){
         
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
         this.authLevel = authLevel;
         this.status = status;
         this.payRate = payRate;
+        this.password = password;
     }
 
     public int getEmployeeID() {

@@ -25,14 +25,21 @@ public class TimeClockDB {
     
     
     public static int insertTimeClock(int employeeID) {
-        SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
-        SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
-        Date aDate = new Date();
+        
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
+        ResultSet rs = null; 
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat ("MM/dd/yy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat ("hh:mm a");
+        Date aDate = new Date();
+        pool = ConnectionPool.getInstance();
+        connection = pool.getConnection();
+        ps = null;
             Employee employee = null;
             TimeClock timeClock = null;
+            employee = EmployeeDB.selectEmployee(employeeID);
         
         //employees are set to 0 status by default
         //at first clockIn they will have day and start time generated

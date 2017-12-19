@@ -114,8 +114,8 @@ public class EmployeesServlet extends HttpServlet {
             double payRate = Double.parseDouble(request.getParameter("payRate"));
             
             // store data in User object
-            Employee employee = new Employee(employeeID, firstName, lastName, password,
-            authLevel, status, payRate);
+            Employee employee = new Employee(employeeID, firstName, lastName,
+            authLevel, status,password, payRate);
             
             EmployeeDB.insert(employee);
             
