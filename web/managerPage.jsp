@@ -37,7 +37,7 @@
                 </table><br>
             </div><!-- END TIME TABLE -->
         <div id="buttons">
-            <a href="managerPageServlet" action="clockIn"><button>Clock-In</button></a>
+            <a href="managerPageServlet?action=clockIn&amp;employeeID=${employee.employeeID}"><button>Clock-In</button></a>
             <a href="managerPageServlet" action="clockOut"><button>Clock-Out</button></a>
             <button action="changePass">Change Password</button>
             <a href="employee"><button>View Employees</button></a>

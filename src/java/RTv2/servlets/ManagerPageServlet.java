@@ -46,7 +46,13 @@ public class ManagerPageServlet extends HttpServlet {
         
         if (action.equals("clockIn")) {
             TimeClock timeClock = (TimeClock) session.getAttribute("dayID");
-            //if dayID.equals("")
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            Employee employee = EmployeeDB.selectEmployee(employeeID);
+            JOptionPane.showMessageDialog(null, employeeID);
+            
+            
+            TimeClockDB.insertTimeClock(employeeID);
+            /*if dayID.equals("")
             //setAttribute for dayID
             if (timeClock.getStartTime().equals("")){
                 timeClock.setStartTime(LocalTime.now().toString());
@@ -61,7 +67,11 @@ public class ManagerPageServlet extends HttpServlet {
             } else if (timeClock.getEndTime().equals("")){
                 timeClock.setEndTime(LocalTime.now().toString());
             } else
-                JOptionPane.showMessageDialog(null, "Please Clock In.");
+                JOptionPane.showMessageDialog(null, "Please Clock In.");*/
+            
+            request.setAttribute("employee",employee);
+            
+            url = "/managerPage.jsp";
         }
         
         else if (action.equals("update_timeClock")) {
