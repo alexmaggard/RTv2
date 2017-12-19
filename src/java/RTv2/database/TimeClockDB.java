@@ -33,6 +33,8 @@ public class TimeClockDB {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
+            Employee employee = null;
+            employee.setStatus(false);
        
         String query = "INSERT INTO cs_workhours (DayID, StartTime, "
                 + "LunchOut, LunchIn, EndTime, EmployeeID) VALUES "
@@ -45,7 +47,6 @@ public class TimeClockDB {
             ps.setString(4, "LunchIn");
             ps.setString(5, "EndTime");
             ps.setInt(6, employeeID);
-            
             return ps.executeUpdate();
             
         } catch(SQLException e) {
