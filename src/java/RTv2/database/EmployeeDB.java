@@ -29,7 +29,7 @@ public class EmployeeDB {
             ps.setString(2, employee.getFirstName());
             ps.setString(3, employee.getLastName());
             ps.setInt(4, employee.getAuthLevel());
-            ps.setBoolean(5, false);
+            ps.setInt(5, employee.getStatus());
             ps.setDouble(6, employee.getPayRate());
             ps.setString(7, "password");//set password default to password
 
